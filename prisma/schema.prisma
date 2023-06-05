@@ -1,0 +1,34 @@
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+   schemas  = ["User", "Book"]
+}
+model User {
+  id    String  @id
+  email String  @unique
+  name  String?
+  password String
+  image String?
+  favourites String[]
+  basket String[]
+  @@schema("User")
+}
+model Book {
+  id String @id 
+  author String
+  seller String
+  condition String
+  titel String
+  images String[]
+  price String
+  publisher String
+  sellerId String
+  category String
+  @@schema("Book")
+}
